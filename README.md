@@ -3,6 +3,32 @@ projecte final de curso de 2da de DAW de grau superior
 
 ## idea planteada para el projecte final:
 
+> ***Aplicación de Gestión Financiera Personal (Sector Económico): Un sistema que ayude a los usuarios a controlar sus gastos e inversiones. 
+Dashboard con gráficos en tiempo real (Go + React/Vue).***
+
+    ✅ ¿Cómo Elegi el Mejor Proyecto?
+  * puntos a tomar en cuenta:
+
+    > Escalabilidad → ¿Podría crecer a nivel profesional?
+
+    > Tecnologías Modernas
+
+    > Impacto Social o Económico → ¿Realmente aporta valor?
+
+✅ Lenguaje de programacion a utilizar :
+
+> Go o Goland, es una gran elección. Go es rápido, eficiente y muy bueno para aplicaciones escalables.
+
+### ¿Qué es Golang?
+* Es un lenguaje de programación creado por Google desde el año 2007 y que salió a la luz en el 2009, desde entonces no ha hecho más que mejorar con el paso de los años y convertirse en una opción muy elegida entre los nuevos desarrolladores web.
+
+* La versatilidad que le caracteriza le permite ser empleado, tanto en proyectos pequeños, como en proyectos grandes (tiene una gran potencia en lo que respecta a la creación de aplicaciones web con alta escala). Es gracias a esto que ha sido utilizado por empresas de la talla de Facebook, Uber, Netflix o Dropbox.
+
+![cargando imagen ...](https://framerusercontent.com/images/kG19dRBk9uWFHTbUVNc5MuoZWu0.webp)
+
+---
+VAMOS AL LIO
+---
 ### 🏗 Arquitectura del Proyecto
 🔹 Características Principales
   + ✔ Registrar ingresos y gastos.
