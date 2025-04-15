@@ -1,4 +1,4 @@
-# projecte_final_2DAW
+# projecte_final_2DAW - PROPUESTA POR SAMUEL
 projecte final de curso de 2da de DAW de grau superior 
 
 ## idea planteada para el projecte final:
