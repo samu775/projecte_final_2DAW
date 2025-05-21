@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1 class="mb-4">Gestió d’usuaris</h1>
+
+<a href="/users/create" class="btn btn-primary mb-3">+ Crear nou usuari</a>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Nom complet</th>
+        <th>Email</th>
+        <th>Telèfon</th>
+        <!-- <th>Data Naixement</th> -->
+        <th>Creat</th>
+        <th>Modificat</th>
+        <th>Rol</th>
+        <th>Estat_compte</th>
+        <th>Accions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ user.nom }} {{ user.cognoms }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.telefon }}</td>
+        <!-- <td>{{ user.data_naixement | formatDate('yyyy-MM-dd') }}</td> -->
+        <td>{{ user.createdAt | formatDate('yyyy-MM-dd HH:mm') }}</td>
+        <td>{{ user.updatedAt | formatDate('yyyy-MM-dd HH:mm') }}</td>
+        <td>{{ user.role_id.nom }}</td>
+        <td>
+          {% if user.estat_compte %}
+            <span class="badge bg-success">Actiu</span>
+          {% else %}
+            <span class="badge bg-danger">Inactiu</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if user.email != loggedInEmail %}
+          <a href="/users/{{ user._id }}" class="btn btn-sm btn-info">👁️</a>
+          <a href="/users/edit/{{ user._id }}" class="btn btn-sm btn-warning">✏️</a>
+          <form action="/users/delete/{{ user._id }}?_method=DELETE" method="POST" style="display:inline-block;">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Estàs segur que vols eliminar aquest usuari?')">
+              🗑️
+            </button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

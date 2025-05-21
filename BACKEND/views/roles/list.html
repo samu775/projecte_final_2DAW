@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+  <h2 class="mb-4">Gestió de Rols</h2>
+  
+  <a href="/roles/create" class="btn btn-primary mb-3">+ Crear nou rol</a>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>Nom del Rol</th>
+          <th>Permisos</th>
+          <th>Accions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rol in roles %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ rol.id }}</td>
+            <td>{{ rol.nom }}</td>
+            <td>{{ rol.permisos }}</td>
+            <td>
+              <a href="/roles/edit/{{ rol.id }}" class="btn btn-warning btn-sm">Editar</a>
+            
+              <form action="/roles/delete/{{ rol.id }}?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Estàs segur que vols eliminar aquest rol?')">
+                  Eliminar
+                </button>
+              </form>
+            </td>
+            
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
