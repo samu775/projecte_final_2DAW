@@ -26,7 +26,7 @@ const Comanda: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const comandaId = location.state?.comandaId || sessionStorage.getItem('comandaId');
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     if (comandaId) {
       sessionStorage.setItem('comandaId', comandaId);
@@ -41,7 +41,7 @@ const Comanda: React.FC = () => {
     const fetchComanda = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch(`http://localhost:3000/api/orders/${comandaId}`, {
+        const res = await fetch(`${API_URL}/orders/${comandaId}`, {
           headers: {
             Authorization: `jwt ${token}`
           }

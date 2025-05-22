@@ -32,11 +32,11 @@ const ChatList: React.FC = () => {
   const history = useHistory();
   const email = localStorage.getItem('email');
   const token = localStorage.getItem('token');
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const carregarChats = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/chats/actius', {
+        const res = await fetch(`${API_URL}/chats/actius`, {
           headers: {
             Authorization: `jwt ${token}`,
           },

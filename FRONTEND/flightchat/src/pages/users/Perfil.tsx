@@ -18,13 +18,14 @@ const Perfil: React.FC = () => {
   const [formData, setFormData] = useState<Usuari | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const token = localStorage.getItem('token');
-
+  const API_URL = import.meta.env.VITE_API_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   useEffect(() => {
     if (!token) return;
 
     const fetchProfile = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/profile', {
+        const res = await fetch(`${API_URL}/profile`, {
           headers: { Authorization: `jwt ${token}` }
         });
         const data = await res.json();
@@ -83,7 +84,7 @@ const Perfil: React.FC = () => {
         const formDataForUpload = new FormData();
         formDataForUpload.append('avatar', formData.avatarFile);
 
-        const uploadRes = await fetch('http://localhost:3000/api/profile/avatar', {
+        const uploadRes = await fetch(`${API_URL}/profile/avatar`, {
           method: 'POST',
           headers: { Authorization: `jwt ${token}` },
           body: formDataForUpload,
@@ -102,7 +103,7 @@ const Perfil: React.FC = () => {
 
       // Actualizar datos del perfil (sin avatarFile)
       const { nom, cognoms, telefon, email, data_naixement } = formData;
-      const profileRes = await fetch('http://localhost:3000/api/profile/update', {
+      const profileRes = await fetch(`${API_URL}/profile/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -122,7 +123,7 @@ const Perfil: React.FC = () => {
 
   return (
     <IonPage>
-      <ToolbarHeader title="Flightchat" />
+      <ToolbarHeader title="Flightchat" showNavButtons/>
       <IonContent className="bg-gray-100 h-full">
         <div className="h-full flex">
           {/* Panell esquerre: només visible en md+ */}
@@ -144,7 +145,7 @@ const Perfil: React.FC = () => {
                               ? formData.avatar
                               : isBase64(formData.avatar || '')
                                 ? `data:image/png;base64,${formData.avatar}`
-                                : `http://localhost:3000/uploads/avatars/${formData.avatar}`
+                                : `${BASE_URL}/uploads/avatars/${formData.avatar}`
                         }
                         alt="Avatar"
                         className="w-24 h-24 rounded-full mb-4 object-cover"

@@ -8,9 +8,9 @@ interface Props {
 
 const UserSelector: React.FC<Props> = ({ onSelect, currentUserEmail }) => {
   const [users, setUsers] = useState<string[]>([]);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
-    fetch('http://localhost:3000/api/online-users')
+    fetch(`${API_URL}/online-users`)
       .then((res) => res.json())
       .then((data) => setUsers(data.filter((u: string) => u !== currentUserEmail)))
       .catch((err) => console.error('Error carregant usuaris:', err));

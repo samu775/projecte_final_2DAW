@@ -56,6 +56,8 @@ const Chat: React.FC = () => {
   const menjar = location.state?.menjar || [];
   const participants = location.state?.participants || [];
   const [showFlightInfo, setShowFlightInfo] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   useEffect(() => {
     if (chatId) {
       sessionStorage.setItem('chatId', chatId);
@@ -67,7 +69,7 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (!jwt || !chatId) return;
 
-    const socketInstance = io('http://localhost:3000', {
+    const socketInstance = io(BASE_URL, {
       auth: { token: jwt },
     });
 
@@ -86,7 +88,7 @@ const Chat: React.FC = () => {
 
     setSocket(socketInstance);
 
-    fetch(`http://localhost:3000/api/chats/${chatId}/messages`, {
+    fetch(`${API_URL}/chats/${chatId}/messages`, {
       headers: { Authorization: `jwt ${jwt}` }
     })
       .then(res => res.json())

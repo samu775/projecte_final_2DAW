@@ -14,11 +14,11 @@ interface UsuariData {
 const Usuari: React.FC = () => {
   const { email } = useParams<{ email: string }>();
   const [usuari, setUsuari] = useState<UsuariData | null>(null);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchUsuari = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/usuaris/${email}`);
+        const res = await fetch(`${API_URL}/usuaris/${email}`);
         if (!res.ok) throw new Error('No s’ha pogut carregar l’usuari');
         const data = await res.json();
         setUsuari(data);

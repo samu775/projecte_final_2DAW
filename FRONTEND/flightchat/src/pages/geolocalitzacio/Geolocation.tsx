@@ -15,7 +15,8 @@ import 'leaflet/dist/leaflet.css';
 import { companyIcons, defaultIcon } from './icons/companyIcons';
 
 const getBcnFlights = async () => {
-  const res = await fetch('/api/opensky/bcn');
+  const API_URL = import.meta.env.VITE_API_URL;
+  const res = await fetch(`${API_URL}/opensky/bcn`);
   if (!res.ok) throw new Error('Error carregant vols de BCN');
   return await res.json();
 };

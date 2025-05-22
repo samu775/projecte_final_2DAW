@@ -20,14 +20,14 @@ const ComandaList: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [paginaActual, setPaginaActual] = useState<number>(1);
   const perPagina = 5;
-
+  const API_URL = import.meta.env.VITE_API_URL;
   const history = useHistory();
 
   useEffect(() => {
     const fetchComandes = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:3000/api/orders/actives', {
+        const response = await fetch(`${API_URL}/orders/actives`, {
           headers: {
             Authorization: `jwt ${token}`
           }

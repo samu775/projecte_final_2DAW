@@ -18,12 +18,12 @@ import {
   const InformeList: React.FC = () => {
     const [informes, setInformes] = useState<Informe[]>([]);
     const [error, setError] = useState<string | null>(null);
-  
+    const API_URL = import.meta.env.VITE_API_URL;
     useEffect(() => {
       const fetchInformes = async () => {
         try {
           const token = localStorage.getItem('token');
-          const res = await fetch('http://localhost:3000/api/informes', {
+          const res = await fetch(`${API_URL}/informes`, {
             headers: {
               Authorization: `jwt ${token}`
             }

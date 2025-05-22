@@ -13,11 +13,12 @@ import {
   const UserList: React.FC = () => {
     const [users, setUsers] = useState<string[]>([]);
     const history = useHistory();
+    const API_URL = import.meta.env.VITE_API_URL;
   
     useEffect(() => {
       const fetchOnlineUsers = async () => {
         try {
-          const res = await fetch('http://localhost:3000/api/online-users');
+          const res = await fetch(`${API_URL}/online-users`);
           if (!res.ok) throw new Error('No s\'han pogut carregar els usuaris online');
           const data = await res.json();
           setUsers(data); // espera un array d'emails, ex: ["anna@exemple.cat", "joan@exemple.cat"]

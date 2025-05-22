@@ -95,11 +95,11 @@ const ToolbarHeader: React.FC<Props> = ({ title, showNavButtons }) => {
       {/* Menú móvil (fuera del Toolbar) */}
       {showNavButtons && menuOpen && (
         <div className="md:hidden bg-white shadow-md z-50 flex flex-col space-y-1 p-4">
-          <IonButton expand="block" routerLink="/comandes" onClick={() => setMenuOpen(false)}>Comandes</IonButton>
-          <IonButton expand="block" routerLink="/chatlist" onClick={() => setMenuOpen(false)}>Chats</IonButton>
-          <IonButton expand="block" routerLink="/geolocation" onClick={() => setMenuOpen(false)}>Vols</IonButton>
-          <IonButton expand="block" routerLink="/incidencies" onClick={() => setMenuOpen(false)}>Incidències</IonButton>
-          <IonButton expand="block" routerLink="/" onClick={() => setMenuOpen(false)}>Crear incidencia</IonButton>
+          <IonButton color="secondary" expand="block" routerLink="/comandes" onClick={() => setMenuOpen(false)}>Comandes</IonButton>
+          <IonButton color="secondary" expand="block" routerLink="/chatlist" onClick={() => setMenuOpen(false)}>Chats</IonButton>
+          <IonButton color="secondary" expand="block" routerLink="/geolocation" onClick={() => setMenuOpen(false)}>Vols</IonButton>
+          <IonButton color="secondary" expand="block" routerLink="/incidencies" onClick={() => setMenuOpen(false)}>Incidències</IonButton>
+          <IonButton color="secondary" expand="block" routerLink="/" onClick={() => setMenuOpen(false)}>Crear incidencia</IonButton>
         </div>
       )}
     </IonHeader>

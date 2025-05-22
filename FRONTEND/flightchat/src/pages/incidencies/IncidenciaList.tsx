@@ -22,14 +22,14 @@ const IncidenciaList: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [paginaActual, setPaginaActual] = useState<number>(1);
   const perPagina = 3;
-
+  const API_URL = import.meta.env.VITE_API_URL;
   const history = useHistory();
 
   useEffect(() => {
     const fetchIncidencies = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch('http://localhost:3000/api/incidents', {
+        const res = await fetch(`${API_URL}/incidents`, {
           headers: {
             Authorization: `jwt ${token}`
           }

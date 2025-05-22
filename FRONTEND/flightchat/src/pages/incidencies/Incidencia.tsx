@@ -17,11 +17,11 @@ const Incidencia: React.FC = () => {
   const [companies, setCompanies] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const history = useHistory();
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/companies');
+        const res = await fetch(`${API_URL}/companies`);
         const data = await res.json();
         setCompanies(data);
       } catch (err) {
@@ -55,7 +55,7 @@ const Incidencia: React.FC = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:3000/api/incidents', {
+      const res = await fetch(`${API_URL}/incidents`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
