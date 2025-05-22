@@ -21,9 +21,13 @@ const Login: React.FC = () => {
         body: JSON.stringify({ email, contrasenya: password }),
       });
 
-      if (!res.ok) throw new Error('Credencials incorrectes');
-
       const data = await res.json();
+
+      if (!res.ok) {
+        alert(data?.message || 'Credencials incorrectes');
+        return;
+      }
+
 
       if (!data.estat_compte) {
         alert("El teu compte encara no ha estat validat per l'administrador.");

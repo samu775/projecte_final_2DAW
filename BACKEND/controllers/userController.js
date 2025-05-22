@@ -33,7 +33,7 @@ const UserController = {
 
         // const salt = await bcrypt.genSalt(10);
         // const hashedPassword = await bcrypt.hash(contrasenya, salt);
-    
+        const estat_compte = req.body.estat_compte === 'on';
         await User.create({
           nom,
           cognoms,
@@ -41,7 +41,8 @@ const UserController = {
           contrasenya,
           data_naixement,
           telefon,
-          role_id
+          role_id,
+          estat_compte
         });
         req.flash('success_msg', 'Usuari creado correctament');
         res.redirect('/users');
@@ -80,6 +81,7 @@ const UserController = {
         user.nom = nom;
         user.email = email;
         user.role_id = role_id;
+        user.estat_compte = req.body.estat_compte === 'true'; // 👈 Aquí
   
         await user.save();
         req.flash('success_msg', 'Usuari actualitzat correctament');
